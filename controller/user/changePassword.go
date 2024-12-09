@@ -7,7 +7,7 @@ import (
 )
 
 func ChangePassword(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	id := c.PostForm("id")
 	password := c.PostForm("password")
 	if db.Table("users").Where("id = ?", id).RecordNotFound() == true {

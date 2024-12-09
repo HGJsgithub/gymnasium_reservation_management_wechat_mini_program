@@ -5,9 +5,9 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-var db *gorm.DB
+//var db *gorm.DB
 
-func InitGormDB() *gorm.DB {
+func ConnectTOGormDB() *gorm.DB {
 	driver := "mysql"
 	host := "127.0.0.1"
 	port := "3306"
@@ -21,8 +21,8 @@ func InitGormDB() *gorm.DB {
 		user, password, host, port, dbname, charset, parseTime, loc)
 	db, err := gorm.Open(driver, args)
 	if err != nil {
-		panic(err)
 		fmt.Println("gorm连接mysql出错！")
+		panic(err)
 	}
 	return db
 }

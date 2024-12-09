@@ -13,7 +13,7 @@ import (
 
 func CheckAndChangeTableTennisVenueState1(c *gin.Context) {
 	tableName := "table_tennis_venue_state1"
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	count := c.PostForm("count")
 	state, _ := strconv.ParseBool(c.PostForm("state"))
 	var success = true
@@ -126,7 +126,7 @@ func CheckAndChangeTableTennisVenueState1(c *gin.Context) {
 
 func CheckAndChangeTableTennisVenueState2(c *gin.Context) {
 	tableName := "table_tennis_venue_state2"
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	count := c.PostForm("count")
 	state, _ := strconv.ParseBool(c.PostForm("state"))
 	var success = true

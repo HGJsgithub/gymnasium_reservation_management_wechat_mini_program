@@ -7,7 +7,7 @@ import (
 )
 
 func ChangeNickname(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	id := c.PostForm("id")
 	nickname := c.PostForm("nickname")
 	if db.Table("users").Where("id = ?", id).RecordNotFound() == true {

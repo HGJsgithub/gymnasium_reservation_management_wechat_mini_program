@@ -3,12 +3,14 @@ package admin
 import (
 	"Gymnasium_reservation_WeChat_mini_program/common/database"
 	"Gymnasium_reservation_WeChat_mini_program/common/utils"
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 	"net/http"
 )
 
 func AdminVerification(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	account := c.PostForm("account")
 	password := c.PostForm("password")
 	isAccRight := utils.CheckAccount(db, account)
@@ -32,6 +34,11 @@ func AdminVerification(c *gin.Context) {
 			"msg":  "密码错误！",
 		})
 	}
-	defer db.Close()
+	defer func(db *gorm.DB) {
+		err := db.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}(db)
 
 }

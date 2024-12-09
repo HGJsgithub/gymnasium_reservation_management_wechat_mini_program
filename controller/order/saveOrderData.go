@@ -3,13 +3,15 @@ package order
 import (
 	"Gymnasium_reservation_WeChat_mini_program/common/database"
 	"Gymnasium_reservation_WeChat_mini_program/model"
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
 )
 
 func SaveOrderData(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	var order model.Order
 	err := c.ShouldBindJSON(&order)
 	log.Println("这是orderData", order)
@@ -30,5 +32,10 @@ func SaveOrderData(c *gin.Context) {
 			})
 		}
 	}
-	defer db.Close()
+	defer func(db *gorm.DB) {
+		err := db.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}(db)
 }

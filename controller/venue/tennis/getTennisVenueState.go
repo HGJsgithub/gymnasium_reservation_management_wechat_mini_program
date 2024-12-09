@@ -10,7 +10,7 @@ import (
 
 // GetTennisVenueState1 获取今天的场地状态表
 func GetTennisVenueState1(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	var venueState []venue.TennisVenueState1
 	db.Find(&venueState)
 	//由于读取出来的数据都是0和1，因此要把0转化为false，1转化为true。rawState就是从数据库读出来的原始数据
@@ -22,7 +22,7 @@ func GetTennisVenueState1(c *gin.Context) {
 
 // GetTennisVenueState2 获取明天的场地状态表
 func GetTennisVenueState2(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	var venueState []venue.TennisVenueState2
 	db.Find(&venueState)
 	//由于读取出来的数据都是0和1，因此要把0转化为false，1转化为true。rawState就是从数据库读出来的原始数据

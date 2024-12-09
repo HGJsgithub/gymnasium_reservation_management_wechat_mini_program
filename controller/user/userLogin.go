@@ -9,7 +9,7 @@ import (
 )
 
 func UserLogin(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	phone := c.PostForm("phone")
 	password := c.PostForm("password")
 	println("phone:", phone, "password:", password)

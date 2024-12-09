@@ -5,11 +5,12 @@ import (
 	"Gymnasium_reservation_WeChat_mini_program/model"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 	"net/http"
 )
 
 func Registration(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	var newUser model.User
 	err := c.ShouldBindJSON(&newUser)
 	fmt.Println(newUser)
@@ -30,6 +31,11 @@ func Registration(c *gin.Context) {
 			})
 		}
 	}
-	defer db.Close()
+	defer func(db *gorm.DB) {
+		err := db.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}(db)
 
 }

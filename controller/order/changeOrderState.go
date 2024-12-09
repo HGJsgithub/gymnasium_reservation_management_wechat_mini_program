@@ -7,7 +7,7 @@ import (
 )
 
 func ChangeOrderState(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	id := c.PostForm("id")
 	state := c.PostForm("state")
 	if db.Table("orders").Where("id = ?", id).RecordNotFound() == false {

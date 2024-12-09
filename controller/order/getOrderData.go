@@ -9,7 +9,7 @@ import (
 )
 
 func GetOrderData(c *gin.Context) {
-	db := database.InitGormDB()
+	db := database.ConnectTOGormDB()
 	userID := c.PostForm("userID")
 	state := c.PostForm("state")
 	log.Println("userID:", userID, "state:", state)
