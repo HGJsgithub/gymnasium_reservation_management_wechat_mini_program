@@ -7,12 +7,12 @@ import (
 
 func UserRoute(r *gin.Engine) *gin.Engine {
 	//用户注册
-	r.POST("/api/auth/registration", user.Registration)
+	r.POST("/auth/registration", user.Registration)
 	//用户登录
-	r.POST("/api/auth/login/user", user.UserLogin)
+	r.POST("/auth/login/user", user.UserLogin)
 	//修改用户昵称
-	r.POST("/api/changeNickname", user.ChangeNickname)
+	r.POST("/changeNickname", user.ChangeNickname)
 	//修改用户密码
-	r.POST("/api/changePassword", user.ChangePassword)
+	r.POST("/changePassword", user.ChangePassword)
 	return r
 }

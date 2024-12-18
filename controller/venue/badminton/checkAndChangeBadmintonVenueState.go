@@ -15,13 +15,18 @@ func CheckAndChangeBadmintonVenueState1(c *gin.Context) {
 	tableName := "badminton_venue_state1"
 	db := database.ConnectTOGormDB()
 	count := c.PostForm("count")
+	fmt.Println("count", count)
 	state, _ := strconv.ParseBool(c.PostForm("state"))
-	var success = true
-	msg := map[int][]string{}
+	fmt.Println("state", state)
 	strID := c.PostForm("id1")
 	id1, _ := strconv.Atoi(strID)
+	fmt.Println("id1", id1)
 	strTimeField1 := c.PostForm("timeField1")
 	timeField1 := strings.Split(strTimeField1, ",")
+	fmt.Println("timeField1", timeField1)
+	var success = true
+	msg := map[int][]string{}
+
 	//判断是否有场地被提前预约
 	for i := range timeField1 {
 		row, _ := db.Table(tableName).Where("id=?", id1).Select(timeField1[i]).Rows()
@@ -59,11 +64,12 @@ func CheckAndChangeBadmintonVenueState1(c *gin.Context) {
 			log.Fatal(err)
 		}
 	}
+	//count=1说明只预定了一个场地,检查完这个场地就可以返回结果了
 	if count == "1" {
 		if success == false {
 			c.JSON(http.StatusOK, gin.H{
-				"success": success,
-				"msg":     msg,
+				"success":       success,
+				"false message": msg,
 			})
 		} else {
 			c.JSON(http.StatusOK, gin.H{"success": success})

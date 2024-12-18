@@ -2,6 +2,7 @@ package database
 
 import (
 	"Gymnasium_reservation_WeChat_mini_program/model/venue"
+	"fmt"
 	"github.com/jinzhu/gorm"
 )
 
@@ -27,7 +28,8 @@ func CreateBadmintonVenueStateData(db *gorm.DB, venueNum int) {
 				T21: false,
 			})
 		} else {
-			println(i, "今天的场地已经存在！")
+			fmt.Println(i, "号场地今天的羽毛球场地已经存在！")
+			fmt.Println()
 		}
 		if db.First(&oneVs2).RecordNotFound() == true {
 			db.Create(&venue.BadmintonVenueState2{
@@ -47,7 +49,8 @@ func CreateBadmintonVenueStateData(db *gorm.DB, venueNum int) {
 				T21: false,
 			})
 		} else {
-			println(i, "明天的场地已经存在！")
+			fmt.Println(i, "号场地明天的羽毛球场地已经存在！")
+			fmt.Println()
 		}
 	}
 }

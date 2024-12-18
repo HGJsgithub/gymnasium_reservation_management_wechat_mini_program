@@ -6,10 +6,10 @@ import (
 )
 
 func TennisRoute(r *gin.Engine) *gin.Engine {
-	r.GET("/api/venueInfo/venueState/tennis/getVenueState/today", tennis.GetTennisVenueState1)
-	r.GET("/api/venueInfo/venueState/tennis/getVenueState/tomorrow", tennis.GetTennisVenueState2)
-	r.POST("/api/venueInfo/venueState/tennis/checkAndChangeVenueState/today", tennis.CheckAndChangeTennisVenueState1)
-	r.POST("/api/venueInfo/venueState/tennis/checkAndChangeVenueState/tomorrow", tennis.CheckAndChangeTennisVenueState2)
+	r.GET("/venueInfo/venueState/tennis/getVenueState/today", tennis.GetTennisVenueState1)
+	r.GET("/venueInfo/venueState/tennis/getVenueState/tomorrow", tennis.GetTennisVenueState2)
+	r.POST("/venueInfo/venueState/tennis/checkAndChangeVenueState/today", tennis.CheckAndChangeTennisVenueState1)
+	r.POST("/venueInfo/venueState/tennis/checkAndChangeVenueState/tomorrow", tennis.CheckAndChangeTennisVenueState2)
 
 	return r
 }

@@ -7,8 +7,8 @@ import (
 
 func AnnRoute(r *gin.Engine) *gin.Engine {
 	//获取公告
-	r.GET("/api/announcement/get", announcement.GetAnn)
+	r.GET("/announcement/get", announcement.GetAnn)
 	//删除公告
-	r.POST("/api/announcement/delete", announcement.DeleteAnn)
+	r.POST("/announcement/delete", announcement.DeleteAnn)
 	return r
 }

@@ -34,7 +34,8 @@ func CreateAnnData(db *gorm.DB) {
 				Content: annList[i].Content,
 			})
 		} else {
-			println(i+1, "公告已经存在！")
+			fmt.Println(i+1, "公告已经存在！")
+			fmt.Println()
 		}
 	}
 }
