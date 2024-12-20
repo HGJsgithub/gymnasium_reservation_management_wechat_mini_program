@@ -5,9 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-//var db *gorm.DB
-
-func ConnectTOGormDB() *gorm.DB {
+func ConnectToGormDB() *gorm.DB {
 	driver := "mysql"
 	host := "127.0.0.1"
 	port := "3306"

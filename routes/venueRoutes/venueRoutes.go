@@ -5,9 +5,7 @@ import (
 )
 
 func VenueRoutes(r *gin.Engine) *gin.Engine {
-	r = BadmintonRoute(r)
-	r = TableTennisRoute(r)
-	r = TennisRoute(r)
-
+	r = GetVenueStateRoutes(r)
+	r = ChangeVenueStateRoute(r)
 	return r
 }
