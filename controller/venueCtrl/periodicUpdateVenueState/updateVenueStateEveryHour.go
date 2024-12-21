@@ -14,11 +14,12 @@ func UpdateVenueStateEveryHour(c *cron.Cron) {
 		nowHour--
 		timeField := "t" + strconv.Itoa(nowHour)
 		var b venueModel.BadmintonVenueState
-		b.UpdateVenueStateEveryHour(timeField)
 		var tt venueModel.TableTennisVenueState
-		tt.UpdateVenueStateEveryHour(timeField)
 		var t venueModel.TennisVenueState
+		b.UpdateVenueStateEveryHour(timeField)
+		tt.UpdateVenueStateEveryHour(timeField)
 		t.UpdateVenueStateEveryHour(timeField)
+
 	})
 	if err != nil {
 		fmt.Println("每个小时修改场地状态出错：", err)

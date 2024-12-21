@@ -24,6 +24,8 @@ func main() {
 	venueStateTable.CreateTableTennisVenueStateData(db, TableTennisVenueNum)
 	venueStateTable.CreateTennisVenueStateData(db, TennisVenueNum)
 
+	periodicUpdateVenueState.UpdateAllTimeVenueStateAtOnce()
+
 	//把所有场地状态变成空闲
 	//venueStateTable.ResetBadmintonVS(db, 6)
 	//venueStateTable.ResetTableTennisVS(db, 4)
